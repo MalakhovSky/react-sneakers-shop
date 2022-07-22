@@ -1,0 +1,30 @@
+.card{
+   border: 1px solid #F8F8F8;
+   padding: 30px;
+   width: 220px;
+   border-radius: 40px;
+   transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+   &:hover{
+     box-shadow: 0px 14px 30px rgba(0,0,0,0.04);
+     transform: translateY(-5px);
+     
+   }
+   .favorite{
+     margin: 10px;
+     position: absolute;
+     cursor: pointer;
+   }
+ 
+   span{
+     text-transform: uppercase;
+     opacity: 0.5;
+     font-size: 14px;
+   }
+   b{
+     font-size: 13px;
+   }
+   h5{
+     font-weight: 400;
+     font-size: 14px;
+   }
+ }

@@ -2,7 +2,14 @@ import Card from "./components/Card";
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
 
-function App() {
+const arr =[
+  {title: 'Кроссовки adidas Originals, core black', price: 12999, imageUrl:"/img/sneakers/1.jpg"},
+  {title: 'Кеды мужские Adidas Superstar, белые ', price: 10999, imageUrl:"/img/sneakers/2.jpg"},
+];
+
+
+
+function App(props) {
   return (
     <div className="wrapper clear">
       <Drawer />
@@ -16,9 +23,15 @@ function App() {
           </div>
         </div>
         <div className="d-flex">
-          <Card />
-          <Card />
-          <Card />
+          {/* <Card title="Кроссовки adidas Originals, core black" price={11990} imageUrl="/img/sneakers/1.jpg"/>
+          <Card title="Кеды мужские Adidas Superstar, белые " price={10990} imageUrl="/img/sneakers/2.jpg"/> */}
+          {arr.map(obj=>(
+            <Card 
+            title={obj.title} 
+            price={obj.price} 
+            imageUrl={obj.imageUrl} 
+            onClick={()=> console.log(obj)}/>
+          ))}
         </div>
       </div>
     </div>
