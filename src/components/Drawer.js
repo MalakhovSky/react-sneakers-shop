@@ -1,20 +1,23 @@
-function Drawer(props) {
+function Drawer({onClose,items = []}) {
    return (
-      <div style={{ display: 'none' }} className="overlay">
+      <div className="overlay">
          <div className="drawer">
-            <h2 className="mb-30">Корзина</h2>
+            <h2 className="mb-30 d-flex justify-between mb-30">Корзина 
+            <img onClick={onClose} width={20} className="cu-p" src="/img/btn-remove.svg" alt="Close"/>
+            </h2>
 
             <div className="items">
 
-               <div className="cartItem d-flex align-center mb-20">
-
-                  <div style={{ backgroundImage: 'url(/img/sneakers/1.jpg)' }} className="cartItemImg"></div>
-                  <div className="mr-20">
-                     <p className="mb-5">Кроссовки adidas Originals, core black / core black / grey five</p>
-                     <b>12 999 руб.</b>
+               {items.map((obj)=>(
+                  <div className="cartItem d-flex align-center mb-20">
+                     <div style={{backgroundImage: `url(${obj.imageUrl})`}} className="cartItemImg"></div>
+                  <div className="mr-20 flex">
+                     <p className="mb-5">{obj.title}</p>
+                     <b> {obj.price} руб.</b>
                   </div>
-                  <img className="removeBtn" width={20} src="/img/btn-remove.svg" alt="Remove" />
-               </div>
+                  <img width={15} className="removeBtn" src="/img/btn-remove.svg" alt="Remove"/>
+                  </div>
+               ))}
                <div className="cartTotalBlock">
                   <ul >
                      <li className="d-flex justify-between">
@@ -30,6 +33,7 @@ function Drawer(props) {
                   </ul>
                   <button className="greenButton">Оформить заказ</button>
                </div>
+               
             </div>
          </div>
       </div>

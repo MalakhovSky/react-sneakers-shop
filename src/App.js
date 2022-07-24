@@ -3,20 +3,28 @@ import Header from "./components/Header";
 import Drawer from "./components/Drawer";
 import React from "react";
 
-const arr =[
-  {title: 'Кроссовки adidas Originals, core black', price: 12999, imageUrl:"/img/sneakers/1.jpg"},
-  {title: 'Кеды мужские Adidas Superstar, белые ', price: 10999, imageUrl:"/img/sneakers/2.jpg"},
-];
-
-
-
 function App(props) {
-  
+  const [items, setItems] = React.useState([]);
+  const [cartItems, setCartItems] = React.useState([]);
+  const [cartOpened, setCartOpened] = React.useState(false);
+
+  React.useEffect(()=>{
+    fetch('https://62dd89ca79b9f8c30aabc074.mockapi.io/items')
+  .then((res) => {
+    return res.json();
+  }).then((json) => {
+    setItems(json);
+  })
+  },[])
+
+  const onAddToCart =(obj)=>{
+    setCartItems(prev => [...prev,obj])
+  }
 
   return (
     <div className="wrapper clear">
-      <Drawer />
-      <Header />
+      {cartOpened && <Drawer items={cartItems} onClose={()=> setCartOpened(false)}/>}
+      <Header onClickCart={()=> setCartOpened(true)}/>
       <div className="content p-40">
         <div className="d-flex align-center mb-40 justify-between">
           <h1 >Все кроссовки</h1>
@@ -25,14 +33,14 @@ function App(props) {
             <input placeholder="Поиск..." />
           </div>
         </div>
-        <div className="d-flex">
-          {arr.map(obj=>(
+        <div className="d-flex flex-wrap">
+          {items.map(item=>(
             <Card 
-            title={obj.title} 
-            price={obj.price} 
-            imageUrl={obj.imageUrl} 
+            title={item.title} 
+            price={item.price} 
+            imageUrl={item.imageUrl} 
             onFavorite={()=> console.log('add Favorite')}
-            onPlus={()=> console.log('press plus')}/> 
+            onPlus={(obj)=> onAddToCart(obj)}/> 
           ))}
         </div>
       </div>
