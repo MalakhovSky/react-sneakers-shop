@@ -9,9 +9,6 @@ function Card({imageUrl,title,price,onFavorite,onPlus}) {
       setIsAdded(!isAdded);
    }
 
-   React.useEffect(()=>{
-      console.log('someChanges')
-   },[isAdded]);
 
    return (
       <div className={styles.card}>
