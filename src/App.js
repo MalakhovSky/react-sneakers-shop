@@ -24,7 +24,7 @@ function App(props) {
     setCartItems(prev => [...prev,obj])
   }
   const onRemoveItem = (id) =>{
-    // axios.delete(`https://62dd89ca79b9f8c30aabc074.mockapi.io/cart${id}`);
+    axios.delete(`https://62dd89ca79b9f8c30aabc074.mockapi.io/cart/${id}`);
     setCartItems(prev => [...prev.filter(item=>item.id !== id)])
   }
   const onChangeSearchInput = (event) =>{

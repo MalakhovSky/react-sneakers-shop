@@ -75,6 +75,25 @@ header{
     font-size: 24px;
   }
 }
+.cartEmpty{
+  .greenButton{
+    width: 100%;
+    height: 55px;
+    background: #9dd558;
+    border-radius: 18px;
+    border: 0;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 30px;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+
+    &:hover{
+      background: lighten($color: #9dd558, $amount: 10);
+    }
+  }
+}
 .cartItem{
   border: 1px solid #f3f3f3;
   border-radius: 20px;
@@ -105,6 +124,7 @@ header{
   }
   
 }
+
 .cartTotalBlock{
   .greenButton{
     width: 100%;
