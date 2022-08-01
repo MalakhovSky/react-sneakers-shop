@@ -27,8 +27,17 @@ function App(props) {
   }, [])
 
   const onAddToCart = (obj) => {
-    axios.post('https://62dd89ca79b9f8c30aabc074.mockapi.io/cart', obj);
-    setCartItems(prev => [...prev, obj])
+    try {
+      if (cartItems.find((item) => Number(item.id) === Number(obj.id))) {
+        axios.delete(`https://62dd89ca79b9f8c30aabc074.mockapi.io/cart/${obj.id}`);
+        setCartItems(prev => prev.filter(item => Number(item.id) !== Number(obj.id)));
+      } else {
+        axios.post('https://62dd89ca79b9f8c30aabc074.mockapi.io/cart', obj);
+        setCartItems(prev => [...prev, obj])
+      }
+    } catch (error) {
+
+    }
   }
   const onRemoveItem = (id) => {
     axios.delete(`https://62dd89ca79b9f8c30aabc074.mockapi.io/cart/${id}`);
@@ -58,6 +67,7 @@ function App(props) {
           path="/"
           element={
             <Home items={items}
+              cartItems={cartItems}
               searchValue={searchValue}
               setSearchValue={setSearchValue}
               onChangeSearchInput={onChangeSearchInput}
