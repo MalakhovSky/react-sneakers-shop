@@ -52,7 +52,7 @@ function App(props) {
   return (
     <div className="wrapper clear">
       {cartOpened && <Drawer items={cartItems} onClose={() => setCartOpened(false)} onRemove={onRemoveItem} />}
-      <Header onClickCart={() => setCartOpened()} />
+      <Header onClickCart={() => setCartOpened(true)} />
       <Routes>
         <Route
           path="/"
