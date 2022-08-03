@@ -6,14 +6,18 @@ import axios from "axios";
 import Home from "./pages/Home";
 import { Route, Routes } from 'react-router-dom';
 import Favorites from "./pages/Favorites";
+import AppContext from "./context";
+
+
 
 function App(props) {
   const [items, setItems] = React.useState([]);
   const [cartItems, setCartItems] = React.useState([]);
   const [searchValue, setSearchValue] = React.useState('');
   const [cartOpened, setCartOpened] = React.useState(false);
-  const [favorites, setFavorites] = React.useState([])
-  const [isLoading, setIsLoading] = React.useState(true)
+  const [favorites, setFavorites] = React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(true);
+
 
 
   React.useEffect(() => {
@@ -63,7 +67,12 @@ function App(props) {
 
   }
 
+  const isItemAdded = (id) =>{
+    return cartItems.some(obj => Number(obj.id) === Number(id))
+  }
+
   return (
+    <AppContext.Provider value={{cartItems,favorites,items,isItemAdded}}>
     <div className="wrapper clear">
       {cartOpened && <Drawer items={cartItems} onClose={() => setCartOpened(false)} onRemove={onRemoveItem} />}
       <Header onClickCart={() => setCartOpened(true)} />
@@ -83,11 +92,12 @@ function App(props) {
         </Route>
         <Route path="/favorites"
           element={
-            <Favorites items={favorites} onAddToFavorite={onAddToFavorite} />}>
+            <Favorites onAddToFavorite={onAddToFavorite} />}>
         </Route>
       </Routes>
 
     </div>
+    </AppContext.Provider>
   );
 }
 
