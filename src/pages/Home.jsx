@@ -6,15 +6,20 @@ function Home({ cartItems,
    setSearchValue,
    onChangeSearchInput,
    onAddToFavorite,
-   onAddToCart }) {
+   onAddToCart,
+   isLoading
+}) {
    const renderItems = () => {
-      return items.filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase())).map(item => (
+      const filtredItems = items.filter((item) =>
+      item.title.toLowerCase().includes(searchValue.toLowerCase()),
+    );
+      return (isLoading ? [...Array(8)]:filtredItems).map((item ,index) => (
          <Card
-            key={item.title}
+            key={index}
             onFavorite={(obj) => onAddToFavorite(obj)}
             onPlus={(obj) => onAddToCart(obj)}
             added={cartItems.some(obj => Number(obj.id) === Number(item.id))}
-            loading={false}
+            loading={isLoading}
             {...item} />
       ))
    }
