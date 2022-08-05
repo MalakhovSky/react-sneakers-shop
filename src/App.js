@@ -58,8 +58,9 @@ function App(props) {
   }
 
   const onAddToFavorite = async (obj) => {
-    if (favorites.find((favObj) => favObj.id === obj.id)) {
+    if (favorites.find((favObj) => +favObj.id === +obj.id)) {
       axios.delete(`https://62dd89ca79b9f8c30aabc074.mockapi.io/favorites/${obj.id}`);
+      setFavorites((prev => [...prev.filter(item => +item.id !== +obj.id)]));
     } else {
       const { data } = await axios.post('https://62dd89ca79b9f8c30aabc074.mockapi.io/favorites', obj);
       setFavorites((prev) => [...prev, data]);
@@ -72,7 +73,7 @@ function App(props) {
   }
 
   return (
-    <AppContext.Provider value={{cartItems,favorites,items,isItemAdded}}>
+    <AppContext.Provider value={{cartItems,favorites,items,isItemAdded,onAddToFavorite,setCartOpened,setCartItems }}>
     <div className="wrapper clear">
       {cartOpened && <Drawer items={cartItems} onClose={() => setCartOpened(false)} onRemove={onRemoveItem} />}
       <Header onClickCart={() => setCartOpened(true)} />
@@ -92,7 +93,7 @@ function App(props) {
         </Route>
         <Route path="/favorites"
           element={
-            <Favorites onAddToFavorite={onAddToFavorite} />}>
+            <Favorites/>}>
         </Route>
       </Routes>
 
