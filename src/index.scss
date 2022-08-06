@@ -14,6 +14,7 @@ body {
   border-radius: 20px;
   max-width: 1080px;
   margin: 50px auto;
+ 
 
 }
 header{
@@ -50,36 +51,9 @@ header{
     cursor: pointer;
   }
 }
-.overlay{
-  position: absolute;
-  left:0;
-  top:0;
-  background-color: rgba(0,0,0,0.1);
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-}
 
-.drawer{
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  width: 420px;
-  right: 0;
-  height: 100%;
-  background: #FFFFFF;
-  box-shadow: -10px 4px 24px rgba(0,0,0,0.1);
-  padding: 30px;
-  .items {
-    flex: 1;
-    overflow: auto;
-    margin-bottom: 40px;
-  }
-  h2{
-    margin: 0;
-    font-size: 24px;
-  }
-}
+
+
 .cartEmpty{
   .greenButton{
     width: 100%;
