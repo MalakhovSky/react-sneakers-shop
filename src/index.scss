@@ -70,6 +70,11 @@ header{
   background: #FFFFFF;
   box-shadow: -10px 4px 24px rgba(0,0,0,0.1);
   padding: 30px;
+  .items {
+    flex: 1;
+    overflow: auto;
+    margin-bottom: 40px;
+  }
   h2{
     margin: 0;
     font-size: 24px;
@@ -126,6 +131,25 @@ header{
 }
 
 .cartTotalBlock{
+  ul {
+    display: block;
+    margin-bottom: 40px !important;
+
+    li {
+      display: flex;
+      align-items: flex-end;
+      margin-bottom: 20px;
+
+      div {
+        flex: 1;
+        height: 1px;
+        border-bottom: 1px dashed #dfdfdf;
+        position: relative;
+        top: -4px;
+        margin: 0 7px;
+      }
+    }
+  }
   .greenButton{
     width: 100%;
     height: 55px;
