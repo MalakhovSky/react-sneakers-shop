@@ -3,17 +3,18 @@ import React from 'react';
 import ContentLoader from "react-content-loader"
 import AppContext from "../../context";
 
-function Card({id,imageUrl,title,price,onFavorite,onPlus,favorited = false,loading = false}) {
+function Card({id,parentId,imageUrl,title,price,onFavorite,onPlus,favorited = false,loading = false}) {
 
    const {isItemAdded} = React.useContext(AppContext)
    const [isFavorite, setIsFavorite] = React.useState(favorited);
+   const obj = {id, parentId: id,imageUrl,title,price}
 
    const onClickPlus = () =>{
-      onPlus({id,imageUrl,title,price})
+      onPlus(obj)
    }
 
    const onClickFavorite = () => {
-      onFavorite({id,title,imageUrl,price})
+      onFavorite(obj)
       setIsFavorite(!isFavorite);
    }
 
