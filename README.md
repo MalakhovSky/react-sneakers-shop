@@ -11,7 +11,18 @@ ___
 - CSS-Modules / SCSS (стилизация)
 - React Content Loader (скелетон)
 ___
+- Основной экран проекта: Список кроссовок
+ ![Иллюстрация к проекту](https://github.com/MalakhovSky/react-sneakers-shop/blob/main/Кроссовки.PNG)
+___
 
+- Корзина : При нажатии на иконку корзины выплывает окно корзины
+ ![Иллюстрация к проекту](https://github.com/MalakhovSky/react-sneakers-shop/blob/main/кроссовки-корзина.PNG)
+___
+
+- Поиск : Поиск по названию
+ ![Иллюстрация к проекту](https://github.com/MalakhovSky/react-sneakers-shop/blob/main/кроссовки-поиск.PNG)
+
+# Как развернуть проект
 Getting Started with Create React App
 This project was bootstrapped with Create React App.
 
